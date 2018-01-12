@@ -17,6 +17,7 @@ end
 
 class Login < Login_Base
   def login_flight
+    #wait
     begin_login
     choose_flight
   end
@@ -62,14 +63,14 @@ class Login < Login_Base
   def begin_login
     setup
     account_login
-    email_login("")
-    login_password("")
+    email_login("ketwalters@gmail.com")
+    login_password("mpp23045")
     submit_button
   end
 
   def choose_flight
     flying_from_to('New York', "Miami")
-    flight_dates('06/04/2017','06/07/2017')
+    flight_dates('11/04/2017','11/07/2017')
     adults_children(1)
     teardown
   end
