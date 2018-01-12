@@ -21,11 +21,15 @@ class Start < Base
 
   def begin
     setup
+    choose_and_check
+    teardown
+  end
+
+  def choose_and_check
     product_category('iPads')
     product_page('Apple iPad 2 16GB, Wi-Fi, 9.7in – Black')
     add_to_cart
     checkout
-    teardown
   end
 
   def product_category(product)
