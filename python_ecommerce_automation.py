@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 class MyStoreTest(unittest.TestCase):
 
@@ -18,6 +20,15 @@ class MyStoreTest(unittest.TestCase):
         elem.clear()
         elem.send_keys("dress")
         self.browser.find_element_by_name('submit_search').click()
+
+    def test_hover(self):
+        driver = self.browser
+        driver.get('http://automationpractice.com/index.php')
+        element_to_hover_over = driver.find_element_by_xpath(".//a[contains(text(), 'Women')]")
+
+        hover = ActionChains(driver).move_to_element(element_to_hover_over)
+        hover.perform()
+
 
     def tearDown(self):
         self.browser.close()
