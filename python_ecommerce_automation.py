@@ -9,7 +9,7 @@ class MyStoreTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-    
+
     def test_title(self):
         self.browser.get('http://automationpractice.com/index.php')
         header = self.browser.find_element(By.ID, 'header_logo')
@@ -33,6 +33,11 @@ class MyStoreTest(unittest.TestCase):
         ele_to_click = driver.find_element_by_xpath(".//a[contains(text(), 'T-shirts')]")
         time.sleep(10)
         ele_to_click.click()
+
+    def test_carousel(self):
+        driver = self.browser
+        driver.get('http://automationpractice.com/index.php')
+        driver.find_element_by_class_name("bx-next").click()
 
     def tearDown(self):
         self.browser.close()
