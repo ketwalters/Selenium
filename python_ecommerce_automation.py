@@ -9,7 +9,7 @@ class MyStoreTest(unittest.TestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
-
+    
     def test_title(self):
         self.browser.get('http://automationpractice.com/index.php')
         header = self.browser.find_element(By.ID, 'header_logo')
@@ -38,6 +38,21 @@ class MyStoreTest(unittest.TestCase):
         driver = self.browser
         driver.get('http://automationpractice.com/index.php')
         driver.find_element_by_class_name("bx-next").click()
+    
+    def test_click_quick_view(self):
+        driver = self.browser
+        driver.get('http://automationpractice.com/index.php')
+
+        driver.execute_script("window.scrollTo(0, 1000)")
+
+
+        element_to_hover_over = driver.find_element_by_class_name('product_img_link')
+        hover = ActionChains(driver).move_to_element(element_to_hover_over)
+        hover.perform()
+
+        element_to_click = driver.find_element_by_xpath(".//span[contains(text(), 'Quick view')]")
+        time.sleep(10)
+        element_to_click.click()
 
     def tearDown(self):
         self.browser.close()
